@@ -50,10 +50,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 10px 14px;
+    padding: 10px 12px;
     margin-bottom: 12px;
     box-shadow: var(--shadow);
   }
@@ -62,6 +63,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    min-width: 0;
   }
 
   .brand-dot {
@@ -89,14 +91,40 @@
     color: var(--muted);
   }
 
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
   .badge-anon {
     background: var(--accent-soft);
     color: var(--accent-dark);
     font-weight: 600;
-    font-size: 12px;
-    padding: 6px 10px;
+    font-size: 11.5px;
+    padding: 6px 9px;
     border-radius: 999px;
     white-space: nowrap;
+  }
+
+  .share-mini-btn {
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--ink);
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .share-mini-btn:active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-dark);
   }
 
   .card {
@@ -274,6 +302,27 @@
     color: var(--muted);
   }
 
+  .photo-url-panel {
+    margin-top: 10px;
+    padding: 11px;
+    border-radius: 12px;
+    background: #f8fafb;
+    border: 1px solid var(--border);
+  }
+
+  .photo-url-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .photo-url-bar input {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 11px;
+    font-size: 13.5px;
+  }
+
   .services-list {
     display: flex;
     flex-direction: column;
@@ -370,6 +419,7 @@
   }
 
   input[type="text"],
+  input[type="url"],
   input[type="tel"],
   input[type="password"],
   select,
@@ -532,6 +582,20 @@
     margin-top: 8px;
   }
 
+  .share-card-box {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #edf2f5;
+  }
+
+  .share-feedback {
+    margin-top: 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    min-height: 18px;
+  }
+
   details.faq-item {
     border-bottom: 1px solid #edf2f5;
     padding: 11px 0;
@@ -606,8 +670,12 @@
         <div class="brand-mini-sub">Помощь при зависимостях</div>
       </div>
     </div>
-    <span class="badge-anon">Бесплатно и анонимно</span>
+    <div class="topbar-right">
+      <span class="badge-anon">Анонимно</span>
+      <button type="button" class="share-mini-btn" onclick="shareBusinessCard('topbarShareMsg')">Поделиться</button>
+    </div>
   </header>
+  <div id="topbarShareMsg" class="share-feedback" style="margin:-6px 4px 10px;"></div>
 
   <!-- Главный экран-визитка -->
   <section class="card" id="top">
@@ -627,7 +695,7 @@
     <h2>Консультант кабинета</h2>
     <div class="consultant-header">
       <div class="avatar-box">
-        <img id="consultantPhoto" src="1268.jpg" alt="Консультант Аня" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';">
+        <img id="consultantPhoto" src="1268.jpg" alt="Консультант Аня" onerror="handlePhotoError()">
         <div id="avatarFallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; font-weight:800; color:#0a6866; font-size:22px;">АНЯ</div>
       </div>
       <div>
@@ -648,10 +716,22 @@
       «Счастье можно найти даже в самые тёмные времена, если не забывать обращаться к свету»
     </div>
 
-    <div class="https://i.postimg.cc/jSCcr2GF/Su6-Ra5HXLI.jpg">
-      <span>"https://i.postimg.cc/jSCcr2GF/Su6-Ra5HXLI.jpg"</span>
-      <label for="photoInput" class="btn btn-outline btn-sm" style="width:auto; margin:0; cursor:pointer;">Выбрать фото</label>
+    <div class="photo-upload-row">
+      <span id="photoSourceLabel">Источник фото: 1268.jpg</span>
+      <label for="photoInput" class="btn btn-outline btn-sm" style="width:auto; margin:0; cursor:pointer;">Файл с телефона</label>
       <input type="file" id="photoInput" accept="image/*" style="display:none;">
+    </div>
+
+    <div class="photo-url-panel">
+      <label for="photoUrlInput" style="margin-bottom:4px; font-size:12.5px;">Прямая ссылка на фотографию (URL)</label>
+      <div class="photo-url-bar">
+        <input type="url" id="photoUrlInput" placeholder="https://example.com/photo.jpg">
+        <button type="button" class="btn btn-primary btn-sm" style="width:auto;" onclick="applyPhotoUrl()">Применить</button>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:6px;">
+        <span id="photoStatusText" class="hint" style="margin:0;">Укажите прямую ссылку на картинку или оставьте 1268.jpg</span>
+        <button type="button" class="btn btn-outline btn-sm" style="width:auto; min-height:30px; padding:4px 9px; font-size:11.5px;" onclick="resetPhotoDefault()">Сбросить</button>
+      </div>
     </div>
   </section>
 
@@ -849,6 +929,13 @@
         <a href="https://vk.com/nonarko_ptz" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Сообщество ВКонтакте</a>
       </div>
     </div>
+
+    <div class="share-card-box">
+      <button type="button" class="btn btn-secondary" onclick="shareBusinessCard('contactShareMsg')">
+        Поделиться визиткой
+      </button>
+      <div id="contactShareMsg" class="share-feedback"></div>
+    </div>
   </section>
 
   <!-- Частые вопросы -->
@@ -881,7 +968,115 @@
 </nav>
 
 <script>
+  const DEFAULT_PHOTO_URL = '1268.jpg';
+  const PHOTO_STORAGE_KEY = 'nonarko_ptz_photo_url';
+
   let currentApplicationText = '';
+
+  function getSharePayload() {
+    const shareText =
+      'НоНарко | Консультации о зависимости (Петрозаводск). ' +
+      'Бесплатная анонимная помощь для родственников и близких. ' +
+      'Консультант Аня: @Antoinette_nonarko, тел. 8 911 422-08-15, +7 (8142) 77-63-04. ' +
+      'Адрес: г. Петрозаводск, Лососинское шоссе, 7, 2 этаж.';
+
+    const isHttp = /^https?:\/\//i.test(window.location.href);
+    return {
+      title: 'НоНарко. Консультации о зависимости | ПТЗ',
+      text: shareText,
+      url: isHttp ? window.location.href : undefined,
+      clipboardValue: isHttp ? window.location.href : shareText
+    };
+  }
+
+  function setShareFeedback(msgId, text) {
+    const el = document.getElementById(msgId);
+    if (el) {
+      el.textContent = text;
+    }
+  }
+
+  async function shareBusinessCard(msgId) {
+    const payload = getSharePayload();
+    const shareData = { title: payload.title, text: payload.text };
+    if (payload.url) {
+      shareData.url = payload.url;
+    }
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        setShareFeedback(msgId, 'Меню отправки открыто.');
+        return;
+      } catch (err) {
+        if (err && err.name === 'AbortError') {
+          setShareFeedback(msgId, 'Отправка отменена.');
+          return;
+        }
+      }
+    }
+
+    copyPlain(payload.clipboardValue, 'Ссылка и контакты визитки скопированы');
+    setShareFeedback(msgId, 'Скопировано в буфер обмена — можно вставить в чат или сообщение.');
+  }
+
+  function setConsultantPhoto(src, labelText, statusText) {
+    const img = document.getElementById('consultantPhoto');
+    const fb = document.getElementById('avatarFallback');
+    const label = document.getElementById('photoSourceLabel');
+    const status = document.getElementById('photoStatusText');
+
+    fb.style.display = 'none';
+    img.style.display = 'block';
+    img.src = src;
+
+    if (label && labelText) label.textContent = labelText;
+    if (status && statusText) status.textContent = statusText;
+  }
+
+  function handlePhotoError() {
+    const img = document.getElementById('consultantPhoto');
+    const fb = document.getElementById('avatarFallback');
+    const status = document.getElementById('photoStatusText');
+    img.style.display = 'none';
+    fb.style.display = 'flex';
+    if (status) {
+      status.textContent = 'Не удалось загрузить фото по ссылке или файлу 1268.jpg.';
+    }
+  }
+
+  function applyPhotoUrl() {
+    const input = document.getElementById('photoUrlInput');
+    const raw = input.value.trim();
+    if (!raw) {
+      resetPhotoDefault();
+      return;
+    }
+    const isValid = /^https?:\/\/.+/i.test(raw) || /^data:image\/.+/i.test(raw);
+    if (!isValid) {
+      document.getElementById('photoStatusText').textContent = 'Ссылка должна начинаться с https:// или http://';
+      return;
+    }
+    localStorage.setItem(PHOTO_STORAGE_KEY, raw);
+    setConsultantPhoto(raw, 'Источник фото: прямая ссылка', 'Ссылка сохранена в браузере.');
+  }
+
+  function resetPhotoDefault() {
+    localStorage.removeItem(PHOTO_STORAGE_KEY);
+    document.getElementById('photoUrlInput').value = '';
+    setConsultantPhoto(DEFAULT_PHOTO_URL, 'Источник фото: ' + DEFAULT_PHOTO_URL, 'Возвращено значение по умолчанию (' + DEFAULT_PHOTO_URL + ').');
+  }
+
+  function loadSavedPhoto() {
+    const saved = localStorage.getItem(PHOTO_STORAGE_KEY);
+    const input = document.getElementById('photoUrlInput');
+    if (saved) {
+      if (input) input.value = saved;
+      setConsultantPhoto(saved, 'Источник фото: прямая ссылка', 'Загружена сохранённая ссылка.');
+    } else {
+      setConsultantPhoto(DEFAULT_PHOTO_URL, 'Источник фото: ' + DEFAULT_PHOTO_URL, 'Укажите прямую ссылку на картинку или оставьте ' + DEFAULT_PHOTO_URL);
+    }
+  }
 
   function initChips(groupId) {
     const group = document.getElementById(groupId);
@@ -1067,15 +1262,14 @@
     if (!file) return;
     const reader = new FileReader();
     reader.onload = function (ev) {
-      const img = document.getElementById('consultantPhoto');
-      const fb = document.getElementById('avatarFallback');
-      img.src = ev.target.result;
-      img.style.display = 'block';
-      fb.style.display = 'none';
+      const dataUrl = ev.target.result;
+      localStorage.setItem(PHOTO_STORAGE_KEY, dataUrl);
+      setConsultantPhoto(dataUrl, 'Источник фото: файл с устройства', 'Выбран файл: ' + file.name);
     };
     reader.readAsDataURL(file);
   });
 
+  loadSavedPhoto();
   initChips('whoChips');
   initChips('formatChips');
   loadTgSettings();
