@@ -6,18 +6,23 @@
 <title>НоНарко. Консультации о зависимости | ПТЗ</title>
 <style>
   :root {
-    --bg: #f4f7f8;
-    --card: #ffffff;
-    --ink: #17222b;
-    --muted: #5c6d7a;
-    --accent: #0f8a88;
-    --accent-dark: #0a6866;
-    --accent-soft: #e4f4f3;
-    --border: #e1eaee;
-    --warn-bg: #fff8eb;
-    --warn-border: #f3d299;
-    --success: #18794e;
-    --shadow: 0 6px 24px rgba(18, 38, 52, 0.06);
+    --bg: #2c4a52;
+    --bg-deep: #1e353c;
+    --bg-ochre-glow: rgba(206, 158, 86, 0.14);
+    --card: #f8f5ef;
+    --card-soft: #f2ece2;
+    --ink: #1b282e;
+    --muted: #556770;
+    --accent: #3d6f79;
+    --accent-dark: #285058;
+    --accent-soft: #e2eff1;
+    --wood: #9b6b3b;
+    --wood-soft: #f4eadc;
+    --border: #dfd6c7;
+    --warn-bg: #fbf2e1;
+    --warn-border: #e5c68b;
+    --success: #226b4b;
+    --shadow: 0 10px 28px rgba(13, 24, 29, 0.22);
     --radius: 18px;
   }
 
@@ -34,7 +39,11 @@
     margin: 0;
     padding: 0 0 88px 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 15% 12%, var(--bg-ochre-glow), transparent 46%),
+      radial-gradient(circle at 88% 24%, rgba(114, 168, 176, 0.18), transparent 44%),
+      linear-gradient(180deg, #365a63 0%, var(--bg) 42%, var(--bg-deep) 100%);
+    background-attachment: fixed;
     color: var(--ink);
     line-height: 1.5;
     font-size: 15px;
@@ -70,7 +79,7 @@
     width: 36px;
     height: 36px;
     border-radius: 11px;
-    background: linear-gradient(135deg, var(--accent), #27b1ad);
+    background: linear-gradient(135deg, var(--accent), var(--wood));
     color: #fff;
     display: flex;
     align-items: center;
@@ -110,7 +119,7 @@
 
   .share-mini-btn {
     border: 1px solid var(--border);
-    background: #ffffff;
+    background: var(--card-soft);
     color: var(--ink);
     border-radius: 10px;
     padding: 6px 10px;
@@ -122,9 +131,9 @@
   }
 
   .share-mini-btn:active {
-    background: var(--accent-soft);
-    border-color: var(--accent);
-    color: var(--accent-dark);
+    background: var(--wood-soft);
+    border-color: var(--wood);
+    color: var(--ink);
   }
 
   .card {
@@ -138,8 +147,9 @@
 
   .hero-kicker {
     display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent-dark);
+    background: var(--wood-soft);
+    color: #6f4923;
+    border: 1px solid #e7d4b6;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -211,17 +221,18 @@
   }
 
   .btn-primary {
-    background: var(--accent);
+    background: var(--accent-dark);
     color: #ffffff;
   }
 
   .btn-primary:hover {
-    background: var(--accent-dark);
+    background: #1d3d44;
   }
 
   .btn-secondary {
-    background: var(--accent-soft);
-    color: var(--accent-dark);
+    background: var(--wood-soft);
+    color: #63401d;
+    border: 1px solid #e2ceb0;
   }
 
   .btn-outline {
@@ -250,7 +261,7 @@
     height: 104px;
     border-radius: 14px;
     overflow: hidden;
-    background: #e9eff2;
+    background: var(--card-soft);
     border: 1px solid var(--border);
     flex-shrink: 0;
   }
@@ -271,8 +282,8 @@
 
   .consultant-meta-exp {
     font-size: 13px;
-    color: var(--accent-dark);
-    font-weight: 600;
+    color: var(--wood);
+    font-weight: 700;
     margin-bottom: 6px;
   }
 
@@ -284,43 +295,12 @@
   .quote-box {
     margin-top: 12px;
     padding: 12px 14px;
-    border-left: 3px solid var(--accent);
-    background: #f7fbfb;
+    border-left: 3px solid var(--wood);
+    background: var(--wood-soft);
     border-radius: 0 12px 12px 0;
     font-style: italic;
     font-size: 14px;
-    color: #243442;
-  }
-
-  .photo-upload-row {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .photo-url-panel {
-    margin-top: 10px;
-    padding: 11px;
-    border-radius: 12px;
-    background: #f8fafb;
-    border: 1px solid var(--border);
-  }
-
-  .photo-url-bar {
-    display: flex;
-    gap: 8px;
-    margin-top: 6px;
-  }
-
-  .photo-url-bar input {
-    flex: 1;
-    min-width: 0;
-    padding: 9px 11px;
-    font-size: 13.5px;
+    color: #3a2919;
   }
 
   .services-list {
@@ -333,7 +313,7 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 13px 14px;
-    background: #fcfdfd;
+    background: var(--card-soft);
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -344,7 +324,7 @@
 
   .service-item:hover {
     border-color: var(--accent);
-    background: #f4faf9;
+    background: var(--accent-soft);
   }
 
   .service-title {
@@ -362,7 +342,8 @@
     font-size: 12px;
     font-weight: 700;
     color: var(--accent-dark);
-    background: var(--accent-soft);
+    background: #ffffff;
+    border: 1px solid var(--border);
     padding: 6px 10px;
     border-radius: 9px;
     white-space: nowrap;
@@ -381,15 +362,15 @@
     align-items: flex-start;
     padding: 12px;
     border-radius: 13px;
-    background: #f8fafb;
-    border: 1px solid #ebf1f4;
+    background: var(--card-soft);
+    border: 1px solid var(--border);
   }
 
   .step-num {
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent-dark);
     color: #fff;
     font-weight: 700;
     font-size: 13px;
@@ -412,21 +393,12 @@
     color: var(--ink);
   }
 
-  .hint {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
   input[type="text"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="password"],
   select,
   textarea {
     width: 100%;
     padding: 12px 13px;
-    border: 1px solid #cddbe2;
+    border: 1px solid #d5cab8;
     border-radius: 12px;
     font-family: inherit;
     font-size: 15px;
@@ -440,7 +412,7 @@
   textarea:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(15, 138, 136, 0.14);
+    box-shadow: 0 0 0 3px rgba(61, 111, 121, 0.18);
   }
 
   textarea {
@@ -455,7 +427,7 @@
   }
 
   .chip {
-    border: 1px solid #cddbe2;
+    border: 1px solid #d5cab8;
     background: #ffffff;
     color: var(--ink);
     border-radius: 10px;
@@ -475,8 +447,8 @@
     margin-top: 14px;
     padding: 14px;
     border-radius: 14px;
-    background: #f4faf9;
-    border: 1px solid #bfe3e0;
+    background: var(--card-soft);
+    border: 1px solid var(--border);
   }
 
   .result-header {
@@ -494,7 +466,7 @@
     white-space: pre-wrap;
     font-size: 13.5px;
     background: #ffffff;
-    border: 1px solid #d7ecea;
+    border: 1px solid var(--border);
     border-radius: 11px;
     padding: 11px;
     margin-bottom: 10px;
@@ -518,45 +490,21 @@
 
   .status-msg.ok {
     display: block;
-    background: #e8f7ef;
+    background: #e6f4ed;
     color: var(--success);
-    border: 1px solid #b7e4cb;
+    border: 1px solid #b5dec9;
   }
 
   .status-msg.warn {
     display: block;
     background: var(--warn-bg);
-    color: #7c5208;
+    color: #6d460b;
     border: 1px solid var(--warn-border);
-  }
-
-  details.settings-box {
-    margin-top: 12px;
-    border: 1px dashed #c4d4dc;
-    border-radius: 13px;
-    padding: 10px 12px;
-    background: #fafcfd;
-  }
-
-  details.settings-box summary {
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--muted);
-    list-style: none;
-  }
-
-  details.settings-box summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .settings-inner {
-    margin-top: 10px;
   }
 
   .contact-row {
     padding: 11px 0;
-    border-bottom: 1px solid #edf2f5;
+    border-bottom: 1px solid var(--border);
   }
 
   .contact-row:last-child {
@@ -585,19 +533,23 @@
   .share-card-box {
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid #edf2f5;
+    border-top: 1px solid var(--border);
   }
 
   .share-feedback {
     margin-top: 7px;
     font-size: 12.5px;
     font-weight: 600;
-    color: var(--accent-dark);
+    color: #f3e5cc;
     min-height: 18px;
   }
 
+  .card .share-feedback {
+    color: var(--accent-dark);
+  }
+
   details.faq-item {
-    border-bottom: 1px solid #edf2f5;
+    border-bottom: 1px solid var(--border);
     padding: 11px 0;
   }
 
@@ -624,7 +576,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(248, 245, 239, 0.96);
     backdrop-filter: blur(10px);
     border-top: 1px solid var(--border);
     display: grid;
@@ -695,8 +647,8 @@
     <h2>Консультант кабинета</h2>
     <div class="consultant-header">
       <div class="avatar-box">
-        <img id="https://i.postimg.cc/jSCcr2GF/Su6-Ra5HXLI.jpg" alt="Консультант Аня" onerror="handlePhotoError()">
-        <div id="avatarFallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; font-weight:800; color:#0a6866; font-size:22px;">АНЯ</div>
+        <img id="consultantPhoto" src="1268.jpg" alt="Консультант Аня" onerror="handlePhotoError()">
+        <div id="avatarFallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; font-weight:800; color:#285058; font-size:22px;">АНЯ</div>
       </div>
       <div>
         <div class="consultant-meta-name">Аня</div>
@@ -714,24 +666,6 @@
 
     <div class="quote-box">
       «Счастье можно найти даже в самые тёмные времена, если не забывать обращаться к свету»
-    </div>
-
-    <div class="photo-upload-row">
-      <span id="photoSourceLabel">Источник фото: 1268.jpg</span>
-      <label for="photoInput" class="btn btn-outline btn-sm" style="width:auto; margin:0; cursor:pointer;">Файл с телефона</label>
-      <input type="file" id="photoInput" accept="image/*" style="display:none;">
-    </div>
-
-    <div class="photo-url-panel">
-      <label for="photoUrlInput" style="margin-bottom:4px; font-size:12.5px;">Прямая ссылка на фотографию (URL)</label>
-      <div class="photo-url-bar">
-        <input type="url" id="photoUrlInput" placeholder="https://example.com/photo.jpg">
-        <button type="button" class="btn btn-primary btn-sm" style="width:auto;" onclick="applyPhotoUrl()">Применить</button>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:6px;">
-        <span id="photoStatusText" class="hint" style="margin:0;">Укажите прямую ссылку на картинку или оставьте 1268.jpg</span>
-        <button type="button" class="btn btn-outline btn-sm" style="width:auto; min-height:30px; padding:4px 9px; font-size:11.5px;" onclick="resetPhotoDefault()">Сбросить</button>
-      </div>
     </div>
   </section>
 
@@ -858,24 +792,8 @@
         <textarea id="clientNote" placeholder="Когда удобно связаться и что сейчас беспокоит больше всего..."></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">Сформировать и отправить заявку</button>
+      <button type="submit" class="btn btn-primary">Сформировать заявку</button>
     </form>
-
-    <details class="settings-box">
-      <summary>Настройки автоотправки в Telegram-бота (для администратора)</summary>
-      <div class="settings-inner">
-        <div class="form-group">
-          <label for="tgBotToken">Telegram Bot Token (от @BotFather)</label>
-          <input type="password" id="tgBotToken" placeholder="123456789:AAH...">
-        </div>
-        <div class="form-group" style="margin-bottom:8px;">
-          <label for="tgChatId">Telegram Chat ID получателя</label>
-          <input type="text" id="tgChatId" placeholder="Например: 987654321">
-        </div>
-        <button type="button" class="btn btn-outline btn-sm" onclick="saveTgSettings()">Сохранить настройки бота</button>
-        <div id="settingsSavedMsg" class="hint"></div>
-      </div>
-    </details>
 
     <div id="resultBox" class="result-box" style="display:none;">
       <div class="result-header">
@@ -885,13 +803,10 @@
       <div id="resultText" class="result-text"></div>
 
       <div class="send-stack">
-        <button type="button" id="autoTgBtn" class="btn btn-primary" onclick="sendViaTelegramBot()">
-          Отправить автоматически в Telegram
-        </button>
-        <a id="directTgLink" href="https://t.me/Antoinette_nonarko" target="_blank" rel="noopener" class="btn btn-secondary">
+        <a id="directTgLink" href="https://t.me/Antoinette_nonarko" target="_blank" rel="noopener" class="btn btn-primary">
           Написать Ане в Telegram (@Antoinette_nonarko)
         </a>
-        <a id="directVkLink" href="https://vk.me/nonarko_ptz" target="_blank" rel="noopener" class="btn btn-outline">
+        <a id="directVkLink" href="https://vk.me/nonarko_ptz" target="_blank" rel="noopener" class="btn btn-secondary">
           Открыть диалог ВКонтакте (nonarko_ptz)
         </a>
       </div>
@@ -968,10 +883,25 @@
 </nav>
 
 <script>
+  // Укажите прямую ссылку на фото (например 'https://.../photo.jpg') или оставьте '1268.jpg'
   const DEFAULT_PHOTO_URL = '1268.jpg';
-  const PHOTO_STORAGE_KEY = 'nonarko_ptz_photo_url';
 
   let currentApplicationText = '';
+
+  function initConsultantPhoto() {
+    const img = document.getElementById('consultantPhoto');
+    const fb = document.getElementById('avatarFallback');
+    fb.style.display = 'none';
+    img.style.display = 'block';
+    img.src = DEFAULT_PHOTO_URL;
+  }
+
+  function handlePhotoError() {
+    const img = document.getElementById('consultantPhoto');
+    const fb = document.getElementById('avatarFallback');
+    img.style.display = 'none';
+    fb.style.display = 'flex';
+  }
 
   function getSharePayload() {
     const shareText =
@@ -1020,64 +950,6 @@
     setShareFeedback(msgId, 'Скопировано в буфер обмена — можно вставить в чат или сообщение.');
   }
 
-  function setConsultantPhoto(src, labelText, statusText) {
-    const img = document.getElementById('consultantPhoto');
-    const fb = document.getElementById('avatarFallback');
-    const label = document.getElementById('photoSourceLabel');
-    const status = document.getElementById('photoStatusText');
-
-    fb.style.display = 'none';
-    img.style.display = 'block';
-    img.src = src;
-
-    if (label && labelText) label.textContent = labelText;
-    if (status && statusText) status.textContent = statusText;
-  }
-
-  function handlePhotoError() {
-    const img = document.getElementById('consultantPhoto');
-    const fb = document.getElementById('avatarFallback');
-    const status = document.getElementById('photoStatusText');
-    img.style.display = 'none';
-    fb.style.display = 'flex';
-    if (status) {
-      status.textContent = 'Не удалось загрузить фото по ссылке или файлу 1268.jpg.';
-    }
-  }
-
-  function applyPhotoUrl() {
-    const input = document.getElementById('photoUrlInput');
-    const raw = input.value.trim();
-    if (!raw) {
-      resetPhotoDefault();
-      return;
-    }
-    const isValid = /^https?:\/\/.+/i.test(raw) || /^data:image\/.+/i.test(raw);
-    if (!isValid) {
-      document.getElementById('photoStatusText').textContent = 'Ссылка должна начинаться с https:// или http://';
-      return;
-    }
-    localStorage.setItem(PHOTO_STORAGE_KEY, raw);
-    setConsultantPhoto(raw, 'Источник фото: прямая ссылка', 'Ссылка сохранена в браузере.');
-  }
-
-  function resetPhotoDefault() {
-    localStorage.removeItem(PHOTO_STORAGE_KEY);
-    document.getElementById('photoUrlInput').value = '';
-    setConsultantPhoto(DEFAULT_PHOTO_URL, 'Источник фото: ' + DEFAULT_PHOTO_URL, 'Возвращено значение по умолчанию (' + DEFAULT_PHOTO_URL + ').');
-  }
-
-  function loadSavedPhoto() {
-    const saved = localStorage.getItem(PHOTO_STORAGE_KEY);
-    const input = document.getElementById('photoUrlInput');
-    if (saved) {
-      if (input) input.value = saved;
-      setConsultantPhoto(saved, 'Источник фото: прямая ссылка', 'Загружена сохранённая ссылка.');
-    } else {
-      setConsultantPhoto(DEFAULT_PHOTO_URL, 'Источник фото: ' + DEFAULT_PHOTO_URL, 'Укажите прямую ссылку на картинку или оставьте ' + DEFAULT_PHOTO_URL);
-    }
-  }
-
   function initChips(groupId) {
     const group = document.getElementById(groupId);
     if (!group) return;
@@ -1103,24 +975,6 @@
       }
     }
     document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function loadTgSettings() {
-    const token = localStorage.getItem('nonarko_ptz_tg_token') || '';
-    const chatId = localStorage.getItem('nonarko_ptz_tg_chat_id') || '';
-    document.getElementById('tgBotToken').value = token;
-    document.getElementById('tgChatId').value = chatId;
-  }
-
-  function saveTgSettings() {
-    const token = document.getElementById('tgBotToken').value.trim();
-    const chatId = document.getElementById('tgChatId').value.trim();
-    localStorage.setItem('nonarko_ptz_tg_token', token);
-    localStorage.setItem('nonarko_ptz_tg_chat_id', chatId);
-    const msg = document.getElementById('settingsSavedMsg');
-    msg.textContent = (token && chatId)
-      ? 'Настройки Telegram-бота сохранены в браузере на этом устройстве.'
-      : 'Настройки очищены или заполнены не полностью.';
   }
 
   function buildTicketId() {
@@ -1204,75 +1058,14 @@
       navigator.clipboard.writeText(currentApplicationText).catch(() => {});
     }
 
-    const savedToken = (document.getElementById('tgBotToken').value || localStorage.getItem('nonarko_ptz_tg_token') || '').trim();
-    const savedChatId = (document.getElementById('tgChatId').value || localStorage.getItem('nonarko_ptz_tg_chat_id') || '').trim();
-
-    if (savedToken && savedChatId) {
-      sendViaTelegramBot(savedToken, savedChatId);
-    } else {
-      showStatus('warn', 'Текст заявки готов и скопирован. Нажмите кнопку отправки в Telegram или откройте диалог с Аней (@Antoinette_nonarko) / ВКонтакте.');
-    }
+    showStatus('warn', 'Текст заявки готов и скопирован. Нажмите кнопку ниже, чтобы написать Ане в Telegram или открыть диалог ВКонтакте.');
 
     document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  async function sendViaTelegramBot(overrideToken, overrideChatId) {
-    const token = (overrideToken || document.getElementById('tgBotToken').value || localStorage.getItem('nonarko_ptz_tg_token') || '').trim();
-    const chatId = (overrideChatId || document.getElementById('tgChatId').value || localStorage.getItem('nonarko_ptz_tg_chat_id') || '').trim();
-
-    if (!currentApplicationText) {
-      showStatus('warn', 'Сначала заполните форму и сформируйте заявку.');
-      return;
-    }
-
-    if (!token || !chatId) {
-      showStatus('warn', 'Для автоотправки укажите Bot Token и Chat ID в настройках бота выше либо используйте кнопки перехода в Telegram или ВКонтакте.');
-      return;
-    }
-
-    const btn = document.getElementById('autoTgBtn');
-    btn.disabled = true;
-    btn.textContent = 'Отправляем...';
-
-    try {
-      const resp = await fetch('https://api.telegram.org/bot' + encodeURIComponent(token) + '/sendMessage', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: currentApplicationText
-        })
-      });
-      const data = await resp.json();
-      if (resp.ok && data.ok) {
-        showStatus('ok', 'Заявка успешно отправлена в Telegram.');
-      } else {
-        showStatus('warn', 'Не удалось отправить через бота: проверьте Token, Chat ID и нажал ли получатель «Запустить» в боте.');
-      }
-    } catch (err) {
-      showStatus('warn', 'Ошибка сети при отправке через бота. Текст скопирован — отправьте его через кнопку Telegram или ВКонтакте.');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Отправить автоматически в Telegram';
-    }
-  }
-
-  document.getElementById('photoInput').addEventListener('change', function (e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function (ev) {
-      const dataUrl = ev.target.result;
-      localStorage.setItem(PHOTO_STORAGE_KEY, dataUrl);
-      setConsultantPhoto(dataUrl, 'Источник фото: файл с устройства', 'Выбран файл: ' + file.name);
-    };
-    reader.readAsDataURL(file);
-  });
-
-  loadSavedPhoto();
+  initConsultantPhoto();
   initChips('whoChips');
   initChips('formatChips');
-  loadTgSettings();
 </script>
 </body>
 </html>
